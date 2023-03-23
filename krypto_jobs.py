@@ -30,7 +30,13 @@ from dataclasses import dataclass
 from typing import Any, List
 from web3 import Web3
 
-w3 = Web3(Web3.HTTPProvider("HTTP://127.0.0.1:7545"))
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+w3Provider = os.getenv("WEB3_PROVIDER_URI")
+w3 = Web3(Web3.HTTPProvider(w3Provider))
+
 ################################################################################
 # Step 1:
 # Import Ethereum Transaction Functions into the KryptoJobs2Go Application
